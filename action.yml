@@ -1,0 +1,59 @@
+name: Sync With Hugging Face Space
+description: An action to sync files from a GitHub Repo to a Hugging Face Space (https://hf.co). It also generates a new Readme for the HF Space incorporating a custom yaml header.
+author: alex-bene
+branding:
+  icon: upload-cloud
+  color: yellow
+
+inputs:
+  github_repo_id:
+    required: true
+    type: string
+  github_branch:
+      type: string
+      default: "main"
+  subdirectory:
+    type: string
+    default: ''
+  yml_header_path:
+    type: string
+    default: ''
+  huggingface_repo_id:
+    required: true
+    type: string
+  hf_username:
+    required: true
+  hf_token:
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout Source GitHub Repo to Push
+      uses: actions/checkout@v4
+      with:
+        repository: '${{ inputs.github_repo_id }}'
+        ref: "${{ inputs.github_branch }}"
+        fetch-depth: 0
+        lfs: true
+
+    - name: Create new README
+      shell: bash
+      run: |
+        echo '---'|cat - ${{ inputs.yml_header_path }} > README_sp.md ; \
+        echo -e '---\n'|cat - README.md >> README_sp.md ; \
+        rm README.md ; mv README_sp.md README.md
+
+    - name: Commit changes
+      shell: bash
+      run: |
+        git add README.md ; \
+        git commit "Added yaml header on README for HF Space"
+
+    - name: Push to hub
+      shell: bash
+      env:
+        HF_USERNAME: ${{ inputs.hf_username }}
+        HF_TOKEN: ${{ inputs.hf_token }}
+        HF_REPO_ID: ${{ inputs.huggingface_repo_id }}
+      run: git push https://$HF_USERNAME:$HF_TOKEN@huggingface.co/spaces/$HF_REPO_ID main
