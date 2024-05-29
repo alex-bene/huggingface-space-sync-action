@@ -45,7 +45,7 @@ runs:
       shell: bash
       run: |
         git add README.md ; \
-        git commit "Added yaml header on README for HF Space"
+        git commit -m "Added yaml header on README for HF Space"
 
     - name: Push to hub
       shell: bash
