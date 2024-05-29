@@ -12,9 +12,6 @@ inputs:
   github_branch:
       type: string
       default: "main"
-  subdirectory:
-    type: string
-    default: ''
   yaml_header_path:
     required: true
     type: string
