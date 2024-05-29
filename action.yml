@@ -20,8 +20,10 @@ inputs:
     type: string
   hf_username:
     required: true
+    type: string
   hf_token:
     required: true
+    type: string
 
 runs:
   using: "composite"
