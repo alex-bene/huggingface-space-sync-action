@@ -1,5 +1,5 @@
 name: Sync With Hugging Face Space
-description: An action to sync files from a GitHub Repo to a Hugging Face Space (https://hf.co). It also generates a new Readme for the HF Space incorporating a custom yaml header.
+description: An action to sync files from a GitHub Repo to a Hugging Face Space and prepend the required YAML header to the README.
 author: alex-bene
 branding:
   icon: upload-cloud
