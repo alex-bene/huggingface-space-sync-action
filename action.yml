@@ -45,6 +45,8 @@ runs:
       shell: bash
       run: |
         git add README.md ; \
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config user.name "github-actions[bot]"
         git commit -m "Added yaml header on README for HF Space"
 
     - name: Push to hub
