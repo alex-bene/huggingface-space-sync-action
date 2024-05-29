@@ -16,6 +16,7 @@ inputs:
     type: string
     default: ''
   yml_header_path:
+    required: true
     type: string
     default: ''
   huggingface_repo_id:
