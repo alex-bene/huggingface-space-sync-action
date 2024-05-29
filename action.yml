@@ -15,7 +15,7 @@ inputs:
   subdirectory:
     type: string
     default: ''
-  yml_header_path:
+  yaml_header_path:
     required: true
     type: string
     default: ''
@@ -41,7 +41,7 @@ runs:
     - name: Create new README
       shell: bash
       run: |
-        echo '---'|cat - ${{ inputs.yml_header_path }} > README_sp.md ; \
+        echo '---'|cat - ${{ inputs.yaml_header_path }} > README_sp.md ; \
         echo -e '---\n'|cat - README.md >> README_sp.md ; \
         rm README.md ; mv README_sp.md README.md
 
