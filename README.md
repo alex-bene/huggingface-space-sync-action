@@ -1,5 +1,5 @@
 # Sync With Hugging Face Space
-This action creates a seperate README.md file with a yaml header prepended for Hugging Face 🤗 Space and syncs your updates with the space repo.
+This action creates seperate README.md file with a YAML header prepended for Hugging Face 🤗 Space and syncs your updates with the space repo.
 
 A repo using this action can be found [here](https://github.com/alex-bene/BianqueNet).
 
