@@ -15,7 +15,6 @@ inputs:
   yaml_header_path:
     required: true
     type: string
-    default: ''
   huggingface_repo_id:
     required: true
     type: string
